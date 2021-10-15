@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法copyWithin</title>
+</head>
+
+<body>
+    <script>
+        const arr1 = [{ a: 1 }, { b: 2 }, { c: 3 }]
+        const arr2 = [{ c: 3 }, { d: 4 }, { e: 5 }]
+
+        /**
+         * copyWithin()浅复制数组的一部分到同一数组的另一个位置，不改变原数组的长度
+         * arr.copyWithin(target[, start[, end]]),target大于 start 默认为0， end默认到数组长度结尾
+         * 不支持IE,
+         */
+        console.log([1, 2, 3, 4, 5].copyWithin(-2)) //给下标为-2(即下标为3)，start默认为0，end没数据默认到数组的结尾
+        // [1, 2, 3, 1, 2]
+        console.log(arr1.copyWithin(-2))
+
+        console.log([1, 2, 3, 4, 5].copyWithin(0, 3)) // 从下标为3的数据开始拷贝到结束
+        // [4, 5, 3, 4, 5]
+
+        console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 4))  // 只拷贝下标为3的数据
+        // [4, 2, 3, 4, 5]
+
+        console.log([1, 2, 3, 4, 5].copyWithin(-2, -3, -1)) // 只拷贝下标为-3到-1之前的数据，即-3、-2
+        // [1, 2, 3, 3, 4]
+
+        
+    </script>
+</body>
+
+</html>

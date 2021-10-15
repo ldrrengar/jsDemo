@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法forEach</title>
+</head>
+
+<body>
+    <script>
+       
+        /**
+         * forEach() 对数组的每个元素按索引顺序执行一次给定函数
+         * arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
+         * callback,有三个参数，currentValue当前遍历到的元素，index当前遍历到元素的索引值，array数组本身   thisArg执行回调时用作this对象
+         * 执行一旦开始，则不会停下来，除非抛出异常，every(),some(),find(),findIndex(),for循环这些可以中断
+         **/
+        const array1 = ['a', 'b', 'c'];
+
+        array1.forEach(element => console.log(element));
+
+        // expected output: "a"
+        // expected output: "b"
+        // expected output: "c"
+
+        function Counter() {
+            this.sum = 0;
+            this.count = 0;
+        }
+        Counter.prototype.add = function(array) {
+            array.forEach(function(entry) {
+                this.sum += entry;
+                ++this.count;
+            }, this);
+            // ^---- Note
+        };
+
+        const obj = new Counter();
+        obj.add([2, 5, 9]);
+        obj.count;
+        // 3 === (1 + 1 + 1)
+        obj.sum;
+        // 16 === (2 + 5 + 9)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法filter</title>
+</head>
+
+<body>
+    <script>
+       
+        /**
+         * filter() 方法创建一个新的数组，新数组包含测试通过提供函数的所有元素。
+         * var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])
+         * element处理的元素本身    index处理元素的索引  array处理的数组arr  thisArg执行callback用于this的值
+         **/
+         const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+         const result = words.filter(word => word.length > 6);
+         console.log(result)
+         // expected output: Array ["exuberant", "destruction", "present"]
+    </script>
+</body>
+
+</html>

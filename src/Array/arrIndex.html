@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数组方法</title>
 </head>
+
 <body>
-    
+    <script>
+        const arr1 = [{ a: 1 }, { b: 2 }, { c: 3 }]
+        const arr2 = [{ c: 3 }, { d: 4 }, { e: 5 }]
+        /**
+         * concat()方法用于合并两个或多个数组,是浅拷贝复制别的数组合并
+         * 浏览器基本都支持
+         */
+        const arr3 = arr1.concat(arr2)
+        console.log(arr3)
+        // arr3[1].b = 3
+        // console.log(arr3)
+        // console.log(arr1)
+
+        /**
+         * copyWithin()浅复制数组的一部分到同一数组的另一个位置，不改变原数组的长度
+         * arr.copyWithin(target[, start[, end]]),target大于 start 默认为0， end默认到数组长度结尾
+         * 不支持IE,
+         */
+        console.log([1, 2, 3, 4, 5].copyWithin(-2)) //给下标为-2(即下标为3)，start默认为0，end没数据默认到数组的结尾
+        // [1, 2, 3, 1, 2]
+        console.log(arr1.copyWithin(-2))
+
+        console.log([1, 2, 3, 4, 5].copyWithin(0, 3)) // 从下标为3的数据开始拷贝到结束
+        // [4, 5, 3, 4, 5]
+
+        console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 4))  // 只拷贝下标为3的数据
+        // [4, 2, 3, 4, 5]
+
+        console.log([1, 2, 3, 4, 5].copyWithin(-2, -3, -1)) // 只拷贝下标为-3到-1之前的数据，即-3、-2
+        // [1, 2, 3, 3, 4]
+
+        /**
+         * entries() 方法返回一个新的Array Iterator对象，该对象包含数组中每个索引的键/值对。
+         * IE不支持 
+         */
+        const iterator1 = arr1.entries();
+        var a = []
+        for (var i = 0; i < arr1.length + 1; i++) {    // 注意，是length+1，比数组的长度大
+            var tem = iterator1.next();             // 每次迭代时更新next
+            console.log(tem.done);             // 这里可以看到更新后的done都是false
+            if (tem.done !== true) {             // 遍历迭代器结束done才是true
+                console.log(tem.value);
+                a[i] = tem.value;
+            }
+        }
+        console.log(a)
+
+        /**
+         * every()方法测试数组内所有的元素是否通过某个测试，返回为布尔值
+         * 注：若收到的是一个空数组，则返回true
+         */
+        const isBelowThreshold = (currentValue) => currentValue < 40;
+        const array1 = [1, 30, 39, 29, 10, 13];
+        console.log(array1.every(isBelowThreshold)); // true
+
+        /**
+         * fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。不包括终止索引
+         * arr.fill(value[, start[, end]])
+         * value: 用来填充的值   start： 起始索引值，默认为0   end：终止索引值，默认为数组的length
+         **/
+        [1, 2, 3].fill(4);               // [4, 4, 4]
+        [1, 2, 3].fill(4, 1);            // [1, 4, 4]
+        [1, 2, 3].fill(4, 1, 2);         // [1, 4, 3]
+        [1, 2, 3].fill(4, 1, 1);         // [1, 2, 3]
+        [1, 2, 3].fill(4, 3, 3);         // [1, 2, 3]
+        [1, 2, 3].fill(4, -3, -2);       // [4, 2, 3]
+        [1, 2, 3].fill(4, NaN, NaN);     // [1, 2, 3]
+        [1, 2, 3].fill(4, 3, 5);         // [1, 2, 3]
+        Array(3).fill(4);                // [4, 4, 4]
+        [].fill.call({ length: 3 }, 4);  // {0: 4, 1: 4, 2: 4, length: 3}
+
+        // Objects by reference.
+        var arr = Array(3).fill({}) // [{}, {}, {}];
+        // 需要注意如果fill的参数为引用类型，会导致都执行都一个引用类型
+        // 如 arr[0] === arr[1] 为true
+        arr[0].hi = "hi"; // [{ hi: "hi" }, { hi: "hi" }, { hi: "hi" }]
+
+        
+    </script>
 </body>
+
 </html>

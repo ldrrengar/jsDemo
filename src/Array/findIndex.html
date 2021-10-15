@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法findIndex</title>
+</head>
+
+<body>
+    <script>
+       
+        /**
+         * findIndex() 方法返回数组满足测试函数的第一个元素的索引，否则返回-1。
+         * arr.find(callback[, thisArg])
+         * callback,有三个参数，element当前遍历到的元素，index当前遍历到元素的索引值，array数组本身   thisArg执行回调时用作this对象
+         **/
+         const array1 = [5, 12, 8, 130, 44];
+
+        const isLargeNumber = (element) => element > 13;
+
+        console.log(array1.findIndex(isLargeNumber));
+        // expected output: 3
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法every</title>
+</head>
+
+<body>
+    <script>
+        /**
+          * every()方法测试数组内所有的元素是否通过某个测试，返回为布尔值
+          * 注：若收到的是一个空数组，则返回true
+          */
+        const isBelowThreshold = (currentValue) => currentValue < 40;
+        const array1 = [1, 30, 39, 29, 10, 13];
+        console.log(array1.every(isBelowThreshold)); // true
+    </script>
+</body>
+
+</html>

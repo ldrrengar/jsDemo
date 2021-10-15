@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法</title>
+</head>
+
+<body>
+    <script>
+        const arr1 = [{ a: 1 }, { b: 2 }, { c: 3 }]
+        const arr2 = [{ c: 3 }, { d: 4 }, { e: 5 }]
+
+        /**
+         * entries() 方法返回一个新的Array Iterator对象，该对象包含数组中每个索引的键/值对。
+         * IE不支持 
+         */
+        const iterator1 = arr1.entries();
+        var a = []
+        for (var i = 0; i < arr1.length + 1; i++) {    // 注意，是length+1，比数组的长度大
+            var tem = iterator1.next();             // 每次迭代时更新next
+            console.log(tem.done);             // 这里可以看到更新后的done都是false
+            if (tem.done !== true) {             // 遍历迭代器结束done才是true
+                console.log(tem.value);
+                a[i] = tem.value;
+            }
+        }
+        console.log(a)
+
+        
+    </script>
+</body>
+
+</html>
