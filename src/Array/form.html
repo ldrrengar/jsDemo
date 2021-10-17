@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法form</title>
+</head>
+
+<body>
+    <script>
+       
+        /**
+         * form() 从一个类数组或可迭代对象创建一个新的，浅拷贝的数组实例
+         * Array.from(arrayLike[, mapFn[, thisArg]])
+         * arrayLike想转换成数组的伪数组或可迭代对象，mapFn如果指定了该参数，新数组每个元素都会执行该回调函数，thisArg可选参数，执行回调函数mapFn时this对象。
+         **/
+         console.log(Array.from('foo'));
+        // expected output: Array ["f", "o", "o"]
+
+        console.log(Array.from([1, 2, 3], x => x + x));
+        // expected output: Array [2, 4, 6]
+
+    </script>
+</body>
+
+</html>

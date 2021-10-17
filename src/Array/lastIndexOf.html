@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法lastIndexOf</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * lastIndexOf() 方法返回指定元素(有效的JavaScript值或变量)在数组中的最后一个的索引，如果不存在返回-1.从数组的后面向前查找，从fromIndex处开始
+         * arr.lastIndexOf(searchElement[, fromIndex])
+         * searchElement被查找的元素
+         * fromIndex从此位置逆向查找。默认为数组的长度减1，即整个数组都被查找。如果该值大于等于数组长度，则整个数组都被查找。
+         * 如果为负值，数组仍会从后向前查找。若该值大于数组长度，则返回-1，即不会被查找
+         * 返回值为该元素最后一次出现的索引，未找到为-1
+         **/
+        var array = [2, 5, 9, 2];
+        var index = array.lastIndexOf(2);
+        // index is 3
+        index = array.lastIndexOf(7);
+        // index is -1
+        index = array.lastIndexOf(2, 3);
+        // index is 3
+        index = array.lastIndexOf(2, 2);
+        // index is 0
+        index = array.lastIndexOf(2, -2);
+        // index is 0
+        index = array.lastIndexOf(2, -1);
+        // index is 3
+
+    </script>
+</body>
+
+</html>

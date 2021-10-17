@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法indexOf</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * indexOf() 方法返回指定元素的索引值，不存在就返回-1
+         * arr.indexOf(searchElement[, fromIndex])
+         * searchElement需要查找的元素，fromIndex从指定索引开始查找指定元素，若为负数，则从末尾开始查询fromIndex的绝对值。默认为0,-1从末尾第一个元素开始查找
+         **/
+        const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+        console.log(beasts.indexOf('bison'));
+        // expected output: 1
+
+        // start from index 2
+        console.log(beasts.indexOf('bison', 2));
+        // expected output: 4
+
+        console.log(beasts.indexOf('giraffe'));
+        // expected output: -1
+    </script>
+</body>
+
+</html>

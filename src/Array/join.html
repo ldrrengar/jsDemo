@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法join</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * join() 方法将一个数组(或一个类数组对象)的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，那么将返回该项目而不使用分隔符
+         * arr.join([separator])
+         * separator指定一个字符串来分隔数组的每个元素。如不输入，这默认使用(,),使用空字符串('')，则元素间没有任何字符。若arr长度为0，返回空字符串。
+         * 如果一个元素为 undefined 或 null，它会被转换为空字符串。
+         **/
+        const elements = ['Fire', 'Air', 'Water'];
+
+        console.log(elements.join());
+        // expected output: "Fire,Air,Water"
+
+        console.log(elements.join(''));
+        // expected output: "FireAirWater"
+
+        console.log(elements.join('-'));
+        // expected output: "Fire-Air-Water"
+        function f(a, b, c) {
+            var s = Array.prototype.join.call(arguments);
+            console.log(s); // '1,a,true'
+        }
+        f(1, 'a', true);
+
+    </script>
+</body>
+
+</html>

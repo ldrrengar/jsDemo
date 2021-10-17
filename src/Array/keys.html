@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法keys</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * keys() 方法返回一个包含数组中每个索引键的Array Iterator对象
+         * arr.keys()
+         * 返回一个新的 Array 迭代器对象。
+         **/
+        const array1 = ['a', 'b', 'c'];
+        const iterator = array1.keys();
+
+        for (const key of iterator) {
+            console.log(key);
+        }
+
+        // expected output: 0
+        // expected output: 1
+        // expected output: 2
+        var arr = ["a", , "c"];
+        var sparseKeys = Object.keys(arr);
+        var denseKeys = [...arr.keys()];
+        console.log(sparseKeys); // ['0', '2']
+        console.log(denseKeys);  // [0, 1, 2]
+
+    </script>
+</body>
+
+</html>
