@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法shift</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * shift() 方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。
+         * arr.shift()
+         * 从数组中删除的元素; 如果数组为空则返回undefined 。 
+         **/
+        const array1 = [1, 2, 3];
+
+        const firstElement = array1.shift();
+
+        console.log(array1);
+        // expected output: Array [2, 3]
+
+        console.log(firstElement);
+        // expected output: 1
+
+
+    </script>
+</body>
+
+</html>

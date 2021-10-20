@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法pop</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * pop() 方法从数组中删除最后一个元素，并返回该元素的值。数组长度会因此改变
+         * arr.pop()
+         * 从数组中删除的元素(当数组为空时返回undefined)。
+         **/
+        const plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+
+        console.log(plants.pop());
+        // expected output: "tomato"
+
+        console.log(plants);
+        // expected output: Array ["broccoli", "cauliflower", "cabbage", "kale"]
+
+        plants.pop();
+
+        console.log(plants);
+        // expected output: Array ["broccoli", "cauliflower", "cabbage"]
+
+    </script>
+</body>
+
+</html>

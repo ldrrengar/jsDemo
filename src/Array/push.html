@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法push</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * push() 方法将一个或多个元素添加到数组末尾，并返回数组长度
+         * arr.push(element1, ..., elementN)
+         * elementN要添加的元素。返回为添加元素后的length值
+         **/
+        const animals = ['pigs', 'goats', 'sheep'];
+
+        const count = animals.push('cows');
+        console.log(count);
+        // expected output: 4
+        console.log(animals);
+        // expected output: Array ["pigs", "goats", "sheep", "cows"]
+
+        animals.push('chickens', 'cats', 'dogs');
+        console.log(animals);
+        // expected output: Array ["pigs", "goats", "sheep", "cows", "chickens", "cats", "dogs"]
+        var vegetables = ['parsnip', 'potato'];
+        var moreVegs = ['celery', 'beetroot'];
+
+        // 将第二个数组融合进第一个数组
+        // 相当于 vegetables.push('celery', 'beetroot');
+        Array.prototype.push.apply(vegetables, moreVegs);
+
+        console.log(vegetables);
+        // ['parsnip', 'potato', 'celery', 'beetroot']
+
+    </script>
+</body>
+
+</html>

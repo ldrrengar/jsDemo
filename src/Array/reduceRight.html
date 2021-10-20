@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法reduceRight</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * reduceRight()  方法接受一个函数作为累加器（accumulator）和数组的每个值（从右到左）将其减少为单个值。
+         * arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])
+         * accumulator累计器累计回调的返回值; 它是上一次调用回调时返回的累积值，或initialValue（见于下方）。
+         * currentValue正在处理的元素
+         * index数组中正在处理的当前元素的索引。 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
+         * array调用reduce()的数组
+         * initialValue首次调用 callback 函数时，累加器 accumulator 的值。如果未提供该初始值，则将使用数组中的最后一个元素，并跳过该元素。
+         * 如果不给出初始值，则需保证数组不为空。
+         * 否则，在空数组上调用 reduce 或 reduceRight 且未提供初始值（例如 [].reduce( (acc, cur, idx, arr) => {} ) ）的话，
+         * 会导致类型错误 TypeError: reduce of empty array with no initial value。
+         **/
+        const array1 = [[0, 1], [2, 3], [4, 5]].reduceRight(
+            (accumulator, currentValue) => accumulator.concat(currentValue)
+        );
+
+        console.log(array1);
+        // expected output: Array [4, 5, 2, 3, 0, 1]
+        
+        var sum = [0, 1, 2, 3].reduceRight(function (a, b) {
+            return a + b;
+        });
+        // sum is 6
+
+        var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function (a, b) {
+            return a.concat(b);
+        }, []);
+        // flattened is [4, 5, 2, 3, 0, 1]
+    </script>
+</body>
+
+</html>
