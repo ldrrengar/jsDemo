@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法values</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * values() 方法返回一个新的 Array Iterator 对象，该对象包含数组每个索引的值
+         **/
+        const array1 = ['a', 'b', 'c'];
+        const iterator = array1.values();
+
+        for (const value of iterator) {
+            console.log(value);
+        }
+
+        // expected output: "a"
+        // expected output: "b"
+        // expected output: "c"
+        let arr = ['w', 'y', 'k', 'o', 'p'];
+        let eArr = arr.values();
+
+        for (let letter of eArr) {
+            console.log(letter);
+        } //"w" "y "k" "o" "p"
+        var arr = ['a', 'b', 'c', 'd', 'e'];
+        var iterator = arr.values();
+        iterator.next();               // Object { value: "a", done: false }
+        iterator.next().value;         // "b"
+        iterator.next()["value"];      // "c"
+        iterator.next();               // Object { value: "d", done: false }
+        iterator.next();               // Object { value: "e", done: false }
+        iterator.next();               // Object { value: undefined, done: true }
+        iterator.next().value;         // undefined
+    </script>
+</body>
+
+</html>

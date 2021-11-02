@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法unshift</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * unshift() 方法将一个或多个元素添加到数组的开头，并返回该数组的新长度(该方法修改原有数组)
+         * arr.unshift(element1, ..., elementN)
+         * elementN要添加到数组开头的元素或多个元素。返回数组的新长度
+         **/
+        const array1 = [1, 2, 3];
+
+        console.log(array1.unshift(4, 5));
+        // expected output: 5
+
+        console.log(array1);
+        // expected output: Array [4, 5, 1, 2, 3]
+        let arr = [1, 2];
+
+        arr.unshift(0); // result of the call is 3, which is the new array length
+        // arr is [0, 1, 2]
+
+        arr.unshift(-2, -1); // the new array length is 5
+        // arr is [-2, -1, 0, 1, 2]
+
+        arr.unshift([-4, -3]); // the new array length is 6
+        // arr is [[-4, -3], -2, -1, 0, 1, 2]
+
+        arr.unshift([-7, -6], [-5]); // the new array length is 8
+        // arr is [ [-7, -6], [-5], [-4, -3], -2, -1, 0, 1, 2 ]
+
+    </script>
+</body>
+
+</html>
