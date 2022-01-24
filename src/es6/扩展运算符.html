@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+
+<body>
+    <script>
+        // ... 扩展运算符能将数组转换为逗号分隔的参数序列 
+        //声明一个数组 ... 
+        const tfboys = ['易烊千玺', '王源', '王俊凯'];
+        // => '易烊千玺','王源','王俊凯' 
+        // 声明一个函数 
+        function chunwan() {
+            console.log(arguments);
+        }
+        chunwan(...tfboys); // chunwan('易烊千玺','王源','王俊凯')
+        // Arguments(3) ['易烊千玺', '王源', '王俊凯', callee: ƒ, Symbol(Symbol.iterator): ƒ]
+        
+        //1. 数组的合并 情圣 误杀 唐探 
+        const kuaizi = ['王太利','肖央'];
+        const fenghuang = ['曾毅','玲花']; 
+        // 传统的合并方式 
+        // const zuixuanxiaopingguo = kuaizi.concat(fenghuang);
+        const zuixuanxiaopingguo = [...kuaizi, ...fenghuang]; 
+        console.log(zuixuanxiaopingguo); 
+        //2. 数组的克隆 
+        const sanzhihua = ['E','G','M']; 
+        const sanyecao = [...sanzhihua]; // ['E','G','M'] 
+        console.log(sanyecao); 
+        //3. 将伪数组转为真正的数组 
+        const divs = document.querySelectorAll('div'); 
+        const divArr = [...divs]; 
+        console.log(divArr); // arguments
+    </script>
+</body>
+
+</html>

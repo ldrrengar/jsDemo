@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest参数与函数参数默认值</title>
+</head>
+<body>
+    <script>
+        //ES6 允许给函数参数赋值初始值 
+        //1. 形参初始值 具有默认值的参数, 一般位置要靠后(潜规则) 
+        function add(a,b,c=10) { 
+            return a + b + c; 
+        }
+        let result = add(1,2); 
+        console.log(result); // 13 
+        //2. 与解构赋值结合 
+        // 注意这里参数是一个对象 
+        function connect({host="127.0.0.1", username,password, port}){
+             console.log(host) 
+             console.log(username) 
+             console.log(password) 
+             console.log(port) 
+        }
+        connect({ 
+            // host: 'atguigu.com', 
+            username: 'root', 
+            password: 'root', 
+            port: 3306 
+        }) // 127.0.0.1 root root 3306
+
+        // ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments； 
+        // ES5获取实参的方式 
+        function data(){ 
+            console.log(arguments); 
+        }
+        data("大哥","二哥","三哥","四哥");  //['大哥', '二哥', '三哥', '四哥']
+        // ES6的rest参数...args，rest参数必须放在最后面 
+        function data(...args){ 
+            console.log(args); // fliter some every map 
+        }
+        data("大哥","二哥","三哥","四哥"); // ['大哥', '二哥', '三哥', '四哥']
+    </script>
+</body>
+</html>

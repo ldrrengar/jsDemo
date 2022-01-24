@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器</title>
+</head>
+
+<body>
+    <script>
+        // 声明一个数组 
+        const xiyou = ['唐僧', '孙悟空', '猪八戒', '沙僧'];
+        // 使用 for...of 遍历数组 
+        for (let v of xiyou) {
+            console.log(v);
+        }
+        let iterator = xiyou[Symbol.iterator]();
+        // 调用对象的next方法 
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        // 重新初始化对象，指针也会重新回到最前面 
+        let iterator1 = xiyou[Symbol.iterator]();
+        console.log(iterator1.next());
+        // 声明一个对象
+        const banji = {
+            name: "终极一班",
+            stus: [
+                'xiaoming',
+                'xiaoning',
+                'xiaotian',
+                'knight'
+            ],
+            [Symbol.iterator]() {
+                // 索引变量 
+                let index = 0;
+                // 保存this 
+                let _this = this;
+                return {
+                    next: function () {
+                        if (index < _this.stus.length) {
+                            const result = {
+                                value: _this.stus[index],
+                                done: false
+                            };
+                            // 下标自增
+                            index++;
+                            // 返回结果 
+                            return result;
+                        } else {
+                            return {
+                                value: undefined,
+                                done: true
+                            };
+                        }
+                    }
+                };
+            }
+        }
+        // 遍历这个对象 
+        for (let v of banji) {
+            console.log(v);
+        }
+    </script>
+</body>
+
+</html>

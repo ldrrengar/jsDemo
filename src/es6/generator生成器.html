@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generator生成器</title>
+</head>
+
+<body>
+    <script>
+        // 生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同；
+        // 生成器其实就是一个特殊的函数 
+        // 异步编程 纯回调函数 node fs ajax mongodb 
+        // yield：函数代码的分隔符 
+        function* gen() {
+            console.log(111);
+            yield '一只没有耳朵';
+            console.log(222);
+            yield '一只没有尾部';
+            console.log(333);
+            yield '真奇怪';
+            console.log(444);
+        }
+        let iterator = gen();
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log("遍历：");
+        //遍历 
+        for (let v of gen()) {
+            console.log(v);
+        }
+        function* gen1(arg) {
+            console.log(arg);
+            let one = yield 111;
+            console.log(one);
+            let two = yield 222;
+            console.log(two);
+            let three = yield 333;
+            console.log(three);
+        }
+        let iterator1 = gen1("AAA");
+        console.log(iterator1.next()); // 会执行yield 111; 
+        // next()方法是可以传入参数的，传入的参数作为第一条(上一条)语句yield 111的返回 结果 
+        console.log(iterator1.next("BBB")); // 会执行yield 222; 
+        console.log(iterator1.next("CCC")); // 会执行yield 333; 
+        console.log(iterator1.next("DDD")); // 继续往后走，未定义;
+
+
+        // 异步编程 文件操作 网络操作（ajax，request） 数据库操作 
+        // 需求：1s后控制台输出111 再过2s后控制台输出222 再过3s后控制台输出333
+        // 一种做法：回调地狱
+        // setTimeout(() => {
+        //     console.log(111);
+        //     setTimeout(() => {
+        //         console.log(222);
+        //         setTimeout(() => {
+        //             console.log(333);
+        //         }, 3000)
+        //     }, 2000)
+        // }, 1000)
+        // 另一种做法
+        function one() {
+            setTimeout(() => {
+                console.log(111);
+                iterator2.next();
+            }, 1000)
+        }
+        function two() {
+            setTimeout(() => {
+                console.log(222);
+                iterator2.next();
+            }, 1000)
+        }
+        function three() {
+            setTimeout(() => {
+                console.log(333);
+                iterator2.next();
+            }, 1000)
+        }
+        function* gen2() {
+            yield one();
+            yield two();
+            yield three();
+        }
+        // 调用生成器函数 
+        let iterator2 = gen2();
+        iterator2.next();
+
+        // 模拟获取: 用户数据 订单数据 商品数据 
+        function getUsers(){ 
+            setTimeout(()=>{ 
+                let data = "用户数据"; 
+                // 第二次调用next，传入参数，作为第一个的返回值 
+                iterator3.next(data); // 这里将data传入 
+            },1000); 
+        }
+        function getOrders(){ 
+            setTimeout(()=>{ 
+                let data = "订单数据"; 
+                iterator3.next(data); // 这里将data传入 
+            },1000); 
+        }
+        function getGoods(){ 
+            setTimeout(()=>{ 
+                let data = "商品数据"; 
+                iterator3.next(data); // 这里将data传入 
+            },1000); 
+        }
+        function * gen3(){ 
+            let users = yield getUsers(); 
+            console.log(users); 
+            let orders = yield getOrders(); 
+            console.log(orders); 
+            let goods = yield getGoods(); 
+            console.log(goods); // 这种操作有点秀啊！ 
+        }
+        let iterator3 = gen3(); 
+        iterator3.next();
+    </script>
+</body>
+
+</html>

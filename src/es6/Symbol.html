@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。它是JavaScript 语言的第七种数据类
+         * 型，是一种类似于字符串的数据类型
+         * 特点
+         *  1. Symbol 的值是唯一的，用来解决命名冲突的问题；
+         *  2. Symbol 值不能与其他数据进行运算；
+         *  3. Symbol 定义的对象属性不能使用for…in循环遍历 ，但是可以使用Reflect.ownKeys 来获取对象的所有键名；
+         */
+
+        //创建Symbol 
+        let s = Symbol();
+        // console.log(s, typeof s); 
+        let s2 = Symbol('尚硅谷');
+        let s3 = Symbol('尚硅谷');
+        console.log(s2 == s3); // false 
+        //Symbol.for 创建 
+        let s4 = Symbol.for('尚硅谷');
+        let s5 = Symbol.for('尚硅谷');
+        console.log(s4 == s5); // true 
+        //不能与其他数据进行运算
+        // let result = s + 100;
+        // let result = s > 100;
+        // let result = s + s;
+        // USONB you are so niubility
+        // u undefined
+        // s string symbol
+        // o object
+        // n null number
+        // b boolean
+
+        // 向对象中添加方法 up down 
+        let game = {
+            name: '俄罗斯方块',
+            up: function () { },
+            down: function () { }
+        };
+        // 我们要往game对象里面添加方法，但是怕game对象已经存在 
+        // 同名方法，所以我们这时使用到了Symbol 
+        // 方式一 
+        // 声明一个对象 
+        let methods = {
+            up: Symbol(),
+            down: Symbol()
+        };
+        game[methods.up] = function () {
+            console.log("我可以改变形状");
+        }
+        game[methods.down] = function () {
+            console.log("我可以快速下降!!");
+        }
+        console.log(game);
+        // 方式二 
+        let youxi = {
+            name: "狼人杀",
+            [Symbol('say')]: function () {
+                console.log("我可以发言")
+            },
+            [Symbol('zibao')]: function () {
+                console.log('我可以自爆');
+            }
+        }
+        console.log(youxi);
+        // 如何调用方法？？？ 讲师没讲，这是弹幕说的方法
+        let say = Symbol('say');
+        let youxi1 = {
+            name: "狼人杀",
+            [say]: function () {
+                console.log("我可以发言")
+            },
+            [Symbol('zibao')]: function () {
+                console.log('我可以自爆');
+            }
+        }
+        console.log(youxi1)
+        youxi1[say]();
+    </script>
+</body>
+
+</html>

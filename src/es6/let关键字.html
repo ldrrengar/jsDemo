@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let关键字</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * let关键字用来声明变量，使用let声明的变量有几个特点：
+         * 1、不允许重复声明；
+         * 2、块级作用域（局部变量）
+         * 3、不存在变量提升
+         * 4、不影响作用域链
+         */
+
+        // let关键字使用示例
+        let a;
+        let b, c, d; // 批量声明
+        let e = 100; // 单个声明并赋值
+        let f = 123, g = 'Riven', h = ['Rengar', 'Riven'] // 批量声明
+
+        // 不允许重复声明
+        let dog = "狗";
+        // let dog = "狗"; 报错：Uncaught SyntaxError: Identifier 'dog' has already been declared
+
+        // 块儿级作用域（局部变量）
+        {
+            let cat = "猫"
+            console.log(cat)
+        }
+        // console.log(cat) 报错：Uncaught ReferenceError: cat is not defined
+
+        // 不存在变量提示，即变量创建之前使用。let不存在，var存在（默认值未undefined）。
+        console.log(people1) // 输出默认值undefined
+        // console.log(people2) //报错：Uncaught ReferenceError: people2 is not defined
+        var people1 = '大哥刘备'
+        let people2 = '二哥关羽'
+        // 4. 不影响作用域链； 
+        // 什么是作用域链：很简单，就是代码块内有代码块，跟常规编程语言一样，上级代码块中 的局部变量下级可用
+        {
+            let p = "大哥";
+            function fn() {
+                console.log(p); // 这里是可以使用的 
+            } 
+            fn();
+        }
+    </script>
+</body>
+
+</html>

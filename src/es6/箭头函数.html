@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<body>
+    <script>
+        /**
+         * ES6允许使用箭头（=>）定义函数，箭头函数提供了一种更加简洁的函数书写方式，箭头函数多用于匿名函数的定义
+         * 
+         * 如果形参只有一个，则小括号可以省略；
+         * 函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的执行结果；
+         * 箭头函数 this 指向声明时所在作用域下 this 的值；
+         * 箭头函数不能作为构造函数实例化；
+         * 不能使用 arguments；
+         * 
+         * 注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适；
+         * 箭头函数适合与 this 无关的回调. 定时器, 数组的方法回调 
+         * 箭头函数不适合与 this 有关的回调. 事件回调, 对象的方法
+         */ 
+       // ES6允许使用箭头（=>）定义函数 
+       // 传统写法：无参数
+       var say = function(){ 
+           console.log("hello！");
+       }
+       say();
+       // ES写法2：无参数
+       let speak = () => console.log("hello 哈哈！"); speak();
+       // 传统写法：一个参数
+       var hello = function(name){ 
+           return "hello " + name; 
+        }
+        console.log(hello("訾博")); 
+        // ES6箭头函数：一个参数 
+        let hi = name => "hi " + name;
+        console.log(hi("訾博"));
+        // 传统写法：多个参数
+        var sum = function(a,b,c){ 
+            return a + b + c; 
+        }
+        console.log(sum(1,2,3));
+        // ES6箭头函数：多个参数 
+        let he = (a,b,c) => a + b + c;
+        console.log(he(1,2,3));
+
+        // 1、箭头函数的this是静态的，始终指向函数声明时所在作用域下的this的值
+        const school = {
+            name : "大哥",
+        }
+        // 传统函数 
+        function getName(){ 
+            console.log("getName：" + this.name); 
+        }
+        // 箭头函数 
+        getName1 = () => console.log("getName1：" + this.name); 
+        window.name = "訾博";
+        // 直接调用
+        getName(); 
+        getName1();
+        // 使用call调用 
+        getName.call(school); 
+        getName1.call(school);
+        // 结论：箭头函数的this是静态的，始终指向函数声明时所在作用域下的this的值 
+        // 2、不能作为构造实例化对象 
+        // let Persion = (name,age) => { 
+            // this.name = name; 
+            // this.age = age; 
+            // } 
+        // let me = new Persion("訾博",24); 
+        // console.log(me); // 报错：Uncaught TypeError: Persion is not a constructor 
+        // 3、不能使用 arguments 变量 
+        // let fn = () => console.log(arguments); 
+        // fn(1,2,3); // 报错：Uncaught ReferenceError: arguments is not defined
+    </script>
+</body>
+</html>
